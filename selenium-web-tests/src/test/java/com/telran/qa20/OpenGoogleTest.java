@@ -12,14 +12,13 @@ public class OpenGoogleTest {
   @BeforeMethod
   public void setUp(){
     driver = new ChromeDriver();
-    
 
-    driver.get("https://www.google.com/");
   }
 
   @Test
   public void testGoogle(){
-    System.out.println("google opened.");
+    driver.get("https://www.google.com/");
+    System.out.println("google opened.");//sout
   }
 
   @AfterMethod
