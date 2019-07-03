@@ -7,16 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class TrelloLoginTest {
-  WebDriver wd;
-
-  @BeforeMethod
-  public void setUp() {
-    wd = new ChromeDriver();
-    wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    wd.get("https://trello.com");
-
-  }
+public class TrelloLoginTest  extends  TestBase{
 
   @Test
   public void loginTest() throws InterruptedException {
@@ -33,10 +24,5 @@ public class TrelloLoginTest {
 
   }
 
-
-  @AfterMethod
-  public void tearDown() {
-    wd.quit();
-  }
 
 }
