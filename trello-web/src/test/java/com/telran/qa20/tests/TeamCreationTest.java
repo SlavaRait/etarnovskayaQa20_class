@@ -26,6 +26,7 @@ public class TeamCreationTest extends TestBase {
         app.getSession().pause(7000);
         app.getTeams().submitCreateTeam();
         app.returnToHomePage();
+        app.returnToHomePage();
 
   //      int after = app.getTeams().getTeamsCount();
       //  Assert.assertEquals(after,before+1);

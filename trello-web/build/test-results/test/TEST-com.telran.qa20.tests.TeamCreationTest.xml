@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.telran.qa20.tests.TeamCreationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-21T17:51:46" hostname="Lena-Toshiba" time="16.355">
+  <properties/>
+  <testcase name="createTeam" classname="com.telran.qa20.tests.TeamCreationTest" time="16.355"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[1563731517270	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+bail@chrome://marionette/content/sync.js:223:64
+1563731522525	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+bail@chrome://marionette/content/sync.js:223:64
+]]></system-err>
+</testsuite>
