@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telran.qa20.tests.BoardCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-21T17:51:11" hostname="Lena-Toshiba" time="34.442">
+<testsuite name="com.telran.qa20.tests.BoardCreationTests" tests="1" skipped="1" failures="0" errors="0" timestamp="2019-07-23T15:52:53" hostname="Lena-Toshiba" time="0.0">
   <properties/>
-  <testcase name="testBoardCreationFromHeader" classname="com.telran.qa20.tests.BoardCreationTests" time="34.442"/>
+  <testcase name="testBoardCreationFromHeader" classname="com.telran.qa20.tests.BoardCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[console.error: BroadcastService: 
-  receivedBroadcastMessage: handler for
-  remote-settings/monitor_changes
-  threw error:
-  Message: Error: Polling for changes failed: http://%(server)s/dummy/blocklist//buckets/monitor/collections/changes/records?_expected=%221563667206065%22 is not a valid URL..
-  Stack:
-    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:201:13
-
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
