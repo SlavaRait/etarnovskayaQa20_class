@@ -11,13 +11,25 @@ public class ApplicationManager {
   SessionHelper session;
   WebDriver wd;
   Teams teams;
+  BrowserType;
 
-  public void init() throws InterruptedException {
+  public class ApplicationManager
+  {
+    public String browser;
+    WebDriver wd;
+
+    public ApplicationManager(String browser)
+    {
+      this.browser=browser;
+    }
+
+
+    public void init() throws InterruptedException {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wd.get("https://trello.com");
     session = new SessionHelper(wd);
-    session.login("elena.telran@yahoo.com", "12345.com");
+    session.login("slavarait@gmail.com", "sr232323");
 
     board = new Board(wd);
     teams = new Teams(wd);
@@ -30,6 +42,21 @@ public class ApplicationManager {
   public void pause(int millis) throws InterruptedException {
     Thread.sleep(millis);
   }
+    public void init() throws InterruptedException {
+
+
+      if(browser.equals(BrowserType.FIREFOX))
+      {
+        wd=new FirefoxDriver();
+      }
+      else if(browser.equals(BrowserType.CHROME))
+      {
+        wd= new ChromeDriver();
+      }
+      else if(browser.equals((BrowserType.EDGE)))
+      {
+        new EdgeDriver();
+      }
 
 
   public void click(By locator) {

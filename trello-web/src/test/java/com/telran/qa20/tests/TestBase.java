@@ -8,7 +8,8 @@ import org.testng.annotations.BeforeSuite;
 
 public class TestBase {
 
-   static  ApplicationManager app = new ApplicationManager();
+   static  ApplicationManager app = new ApplicationManager(BrowserType);
+
 
   @BeforeSuite
   public void setUp() throws InterruptedException {

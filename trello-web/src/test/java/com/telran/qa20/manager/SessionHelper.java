@@ -21,7 +21,7 @@ public class SessionHelper  extends HelperBase{
   }
 
   public void login(String email, String pwd) throws InterruptedException {
-    clickLoginButton();
+    clickloginbutton();
     fillLoginForm(email, pwd); //"elena.telran@yahoo.com", "12345.com"
     pause(3000);
     confirmLogin();
@@ -32,7 +32,7 @@ public class SessionHelper  extends HelperBase{
     return isElementPresent2(By.cssSelector("[href='/']"));
   }
 
-  public void clickLoginButton() {
+  public void clickloginbutton() {
     click(By.cssSelector("[href='/login']"));
   }
 }

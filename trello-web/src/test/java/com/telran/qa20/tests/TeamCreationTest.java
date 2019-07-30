@@ -8,7 +8,7 @@ public class TeamCreationTest extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() throws InterruptedException {
         if(!app.getSession().isUserLoggedIn())
-        app.getSession().login("narishka@walla.com", "202010Zxc");
+        app.getSession().login("slavarait@gmail.com", "sr232323");
     }
 
 
