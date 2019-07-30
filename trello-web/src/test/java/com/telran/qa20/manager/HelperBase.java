@@ -28,7 +28,7 @@ public class HelperBase {
     Thread.sleep(millis);
   }
 
-  public boolean isElementPresent1(By locator){
+  public boolean isElementPresent(By locator){
     try {
       wd.findElement(locator);
       return true;
