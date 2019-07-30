@@ -12,9 +12,11 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
   Board board;
   SessionHelper session;
+  UserHelper user;
   WebDriver wd;
   Teams teams;
    String browser;
+
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -33,8 +35,9 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wd.get("https://trello.com");
     session = new SessionHelper(wd);
-    session.login("elena.telran@yahoo.com", "12345.com");
 
+    session.login("elena.telran@yahoo.com", "12345.com");
+    user = new UserHelper(wd);
     board = new Board(wd);
     teams = new Teams(wd);
   }
@@ -57,9 +60,6 @@ public class ApplicationManager {
     click(By.cssSelector("[name=add]"));
   }
 
-
-
-
   public void returnToHomePage() {
     click(By.cssSelector("[href='/']"));
   }
@@ -75,5 +75,11 @@ public class ApplicationManager {
   public Teams getTeams() {
     return teams;
   }
+
+  public UserHelper getUser() {
+    return user;
+  }
+
+
 }
 
