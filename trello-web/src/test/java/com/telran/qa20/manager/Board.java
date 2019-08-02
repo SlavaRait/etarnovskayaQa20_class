@@ -3,6 +3,10 @@ package com.telran.qa20.manager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 public class Board extends HelperBase {
 
@@ -42,7 +46,8 @@ public class Board extends HelperBase {
   }
 
   public void clickMoreButtonInTheMenu() {
-    click(By.cssSelector(".board-menu-navigation-item-link.js-open-more"));
+    waitForElementAndClick((long) 5, By.cssSelector(".board-menu-navigation-item-link.js-open-more"));
+   // click(By.cssSelector(".board-menu-navigation-item-link.js-open-more"));
   }
 
   public void openMenu() {
@@ -55,6 +60,8 @@ public class Board extends HelperBase {
     return  isElementPresent(By.cssSelector("a.mod-show-menu span.board-header-btn-text.u-text-underline"));
   }
   public void confirmBoardDeletion() {
+    new WebDriverWait(wd, 10)
+            .until(ExpectedConditions.elementToBeClickable(By.cssSelector(".js-delete")));
     click(By.cssSelector(".js-delete"));
   }
 
@@ -71,12 +78,21 @@ public class Board extends HelperBase {
   }
 
 
-  public int getPrivateBoardsCount() throws InterruptedException {
-    pause(5000);
+  public int getPrivateBoardsCount()  {
+    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     return wd.findElements(By.xpath("//span[@class='icon-lg icon-member']/../../..//li")).size()-1;
   }
 
+  public String getFirstPrivateBoardName() {
+    return wd.findElement(By.xpath("//span[@class='icon-lg icon-member']/../../..//li")).getText();
+  }
+
   public String getBoardName() {
-    return  wd.findElement(By.cssSelector("span.board-header-btn-text")).getText();
+    return  wd.findElement(By.cssSelector(".js-rename-board")).getText();
+  }
+
+  public void changeBoardName(String newName) {
+    type(By.cssSelector(".board-header-btn-name"), newName);
+   // type(By.cssSelector("input.board-name-input js-board-name-input"),  newName);
   }
 }
