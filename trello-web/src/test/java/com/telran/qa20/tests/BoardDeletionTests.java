@@ -8,7 +8,7 @@ public class BoardDeletionTests extends  TestBase{
   @BeforeMethod
   public void  preconditions() throws InterruptedException {
     if(!app.getSession().isUserLoggedIn()){
-      app.getSession().login("elena.telran@yahoo.com", "12345.com");
+      app.getSession().login("slavarait@gmail.com", "sr232323");
     };
   }
 
