@@ -13,10 +13,12 @@ public class BoardDeletionTests extends  TestBase{
   }
 
   @Test
-  public void testPrivateBoardDeletion(){
+  public void testPrivateBoardDeletion() throws InterruptedException {
     int before = app.getBoard().getPrivateBoardsCount();
-app.getBoard().openFirstPrivateBoard();
-app.getBoard().initBoardDeletion();
+    app.getBoard().openFirstPrivateBoard();
+    String boardname =app.getBoard().getBoardName();
+
+    app.getBoard().initBoardDeletion();
 
 
     app.getBoard().confirmBoardDeletion();//.js-delete
@@ -25,6 +27,7 @@ app.getBoard().initBoardDeletion();
 
     int after = app.getBoard().getPrivateBoardsCount();
 
+    logger.info("GOOD JOB! Board " + boardname + " deleted ");
     Assert.assertEquals(after, before-1);
   }
 

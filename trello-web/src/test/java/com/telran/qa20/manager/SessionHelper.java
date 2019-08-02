@@ -16,7 +16,7 @@ public class SessionHelper  extends HelperBase{
   }
 
   public void fillLoginForm(String email, String password) {
-    type(By.id("use"), email);
+    type(By.id("user"), email);
     type(By.name("password"), password);
   }
 
