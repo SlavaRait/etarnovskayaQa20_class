@@ -1,15 +1,19 @@
 package com.telran.qa20.manager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.google.common.io.Files;
+import com.telran.qa20.tests.TestBase;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -20,6 +24,8 @@ public class ApplicationManager {
   Teams teams;
    String browser;
 
+
+
    public static class MyListener extends AbstractWebDriverEventListener{
      @Override
      public void afterFindBy(By by, WebElement element, WebDriver driver) {
@@ -29,6 +35,14 @@ public class ApplicationManager {
      @Override
      public void onException(Throwable throwable, WebDriver driver) {
        System.out.println(throwable);
+       File tmp = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+       File screenshot = new File("screenshot-" + System.currentTimeMillis()+".png");
+       try {
+         Files.copy(tmp, screenshot);
+       } catch (IOException e) {
+         e.printStackTrace();
+       }
+       System.out.println("!!!! Created Screenshot "+ screenshot);
 
      }
 

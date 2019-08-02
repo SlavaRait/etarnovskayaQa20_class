@@ -28,7 +28,7 @@ public class Board extends HelperBase {
   }
   public void initBoardDeletion() {
     openMenu();
-    clickMoreButtonInTheMenu();
+   clickMoreButtonInTheMenu();
     clickCloseBoardButton();
     confirmCloseButton();
   }
@@ -46,9 +46,9 @@ public class Board extends HelperBase {
   }
 
   public void openMenu() {
-    if(!isBoardMenuOpened()){
-      click(By.cssSelector("a.mod-show-menu span.board-header-btn-text.u-text-underline"));
-    }
+  // if(!isBoardMenuOpened()){
+//      click(By.cssSelector("a.mod-show-menu"));
+ //   }
   }
 
   public boolean isBoardMenuOpened() {
@@ -71,7 +71,12 @@ public class Board extends HelperBase {
   }
 
 
-  public int getPrivateBoardsCount() {
+  public int getPrivateBoardsCount() throws InterruptedException {
+    pause(5000);
     return wd.findElements(By.xpath("//span[@class='icon-lg icon-member']/../../..//li")).size()-1;
+  }
+
+  public String getBoardName() {
+    return  wd.findElement(By.cssSelector("span.board-header-btn-text")).getText();
   }
 }

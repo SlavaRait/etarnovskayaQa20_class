@@ -34,6 +34,9 @@ public class Teams extends HelperBase{
     }
 
         public void typeTeamDescription(String teamDescription) {
+        if(isElementPresent(By.cssSelector("textarea[name = desc]"))){
+            type(By.cssSelector("textarea[name = desc]"), teamDescription);
+        } else
         type(By.cssSelector("form [name = desc]"), teamDescription);
     }
 
