@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class BoardModificationTests extends  TestBase {
   @Test
-  public void changeBoardNameTest(){
+  public void changeBoardNameTest() throws InterruptedException {
 
    String nameOnHomePage = app.getBoard().getFirstPrivateBoardName();
     logger.info("Opened board with name: "+ nameOnHomePage);

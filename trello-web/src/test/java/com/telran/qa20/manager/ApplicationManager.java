@@ -98,8 +98,10 @@ public class ApplicationManager {
     click(By.cssSelector("[name=add]"));
   }
 
-  public void returnToHomePage() {
-    click(By.cssSelector("[href='/']"));
+  public void returnToHomePage() throws InterruptedException {
+    click(By.cssSelector("a [name=house]"));
+    pause(5000);
+    click(By.cssSelector("a [name=house]"));
   }
 
   public Board getBoard() {

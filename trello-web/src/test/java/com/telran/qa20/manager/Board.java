@@ -30,8 +30,8 @@ public class Board extends HelperBase {
   public int getPersonalBoardsCount() {
     return  wd.findElements(By.xpath("//span[@class='icon-lg icon-member']/../../..//li")).size()-1;
   }
-  public void initBoardDeletion() {
-    openMenu();
+  public void initBoardDeletion() throws InterruptedException {
+    //openMenu();
    clickMoreButtonInTheMenu();
     clickCloseBoardButton();
     confirmCloseButton();
@@ -45,19 +45,21 @@ public class Board extends HelperBase {
     click(By.cssSelector(".board-menu-navigation-item-link.js-close-board"));
   }
 
-  public void clickMoreButtonInTheMenu() {
-    waitForElementAndClick((long) 5, By.cssSelector(".board-menu-navigation-item-link.js-open-more"));
-   // click(By.cssSelector(".board-menu-navigation-item-link.js-open-more"));
+  public void clickMoreButtonInTheMenu() throws InterruptedException {
+   // waitForElementAndClick((long) 5, By.cssSelector(".board-menu-navigation-item-link.js-open-more"));
+   pause(5000);
+    click(By.cssSelector(".board-menu-navigation-item-link.js-open-more"));
   }
 
   public void openMenu() {
-  // if(!isBoardMenuOpened()){
-//      click(By.cssSelector("a.mod-show-menu"));
+ // if(!isBoardMenuOpened()){
+     click(By.xpath("//span[contains(text(),'Show Menu')]"));
  //   }
   }
 
   public boolean isBoardMenuOpened() {
-    return  isElementPresent(By.cssSelector("a.mod-show-menu span.board-header-btn-text.u-text-underline"));
+    return  wd.findElement(By.xpath("//*[@class='board-menu js-fill-board-menu']")).isDisplayed();
+    //return  isElementPresent(By.cssSelector("a.mod-show-menu span.board-header-btn-text.u-text-underline"));
   }
   public void confirmBoardDeletion() {
     new WebDriverWait(wd, 10)
@@ -70,7 +72,8 @@ public class Board extends HelperBase {
   }
 
 
-  public void openFirstPrivateBoard() {
+  public void openFirstPrivateBoard() throws InterruptedException {
+    pause(8000);
     WebElement privateBoardsList = wd.findElement(By.xpath("//span[@class='icon-lg icon-member']/../../..//ul"));
     String boardNameForDelete = privateBoardsList.findElement(By.xpath(".//li")).getText();
     System.out.println(boardNameForDelete);
