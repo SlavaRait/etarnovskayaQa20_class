@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 
 public class TestBase {
    static  ApplicationManager app =
-           new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+           new ApplicationManager();
 
   Logger logger =
           LoggerFactory.getLogger(TestBase.class);
@@ -22,9 +22,10 @@ public class TestBase {
   @BeforeSuite
   public void setUp() throws InterruptedException, MalformedURLException {
     app.init();
+    app.pause(7000);
   }
 
-  @AfterSuite(alwaysRun = true)
+  @AfterSuite(enabled = false)
   public void tearDown() {
 
     //app.stop();

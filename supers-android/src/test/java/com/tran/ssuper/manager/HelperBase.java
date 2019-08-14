@@ -1,38 +1,42 @@
 package com.tran.ssuper.manager;
 
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HelperBase {
-  WebDriver wd;
+  AppiumDriver driver;
 
 
-  public HelperBase(WebDriver wd) {
-    this.wd = wd;
+  public HelperBase(AppiumDriver driver) {
+    this.driver = driver;
   }
 
   public void click(By locator) {
-    wd.findElement(locator).click();
+    driver.findElement(locator).click();
 
+  }
+
+  public  void closeKeyBoard(){
+    driver.hideKeyboard();
   }
 
   public void waitForElementAndClick(Long timeout, By locator) {
 
-    new WebDriverWait(wd, timeout)
+    new WebDriverWait(driver, timeout)
             .until(ExpectedConditions.presenceOfElementLocated(locator));
 
-    wd.findElement(locator).click();
+    driver.findElement(locator).click();
 
   }
 
   public void type(By locator, String text) {
     if(text != null) {
       click(locator);
-      wd.findElement(locator).clear();
-      wd.findElement(locator).sendKeys(text);
+      driver.findElement(locator).clear();
+      driver.findElement(locator).sendKeys(text);
     }
   }
 
@@ -43,7 +47,7 @@ public class HelperBase {
 
   public boolean isElementPresent(By locator){
     try {
-      wd.findElement(locator);
+      driver.findElement(locator);
       return true;
     } catch (NoSuchElementException e) {
       return false;
@@ -51,6 +55,6 @@ public class HelperBase {
   }
 
   public boolean isElementPresent2(By locator){
-    return  wd.findElements(locator).size()>0;
+    return  driver.findElements(locator).size()>0;
   }
 }

@@ -1,22 +1,23 @@
 package com.tran.ssuper.manager;
 
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
 public class SessionHelper  extends HelperBase{
 
-  public SessionHelper(WebDriver wd) {
-    super(wd);
+  public SessionHelper(AppiumDriver driver) {
+    super(driver);
   }
 
   public void confirmLogin() {
-    click(By.id("login"));
+    click(By.id("login_btn"));
   }
 
   public void fillLoginForm(String email, String password) {
-    type(By.id("user"), email);
-    type(By.name("password"), password);
+    type(By.id("log_email_input"), email);
+    type(By.id("log_password_input"), password);
   }
 
   public void login(String email, String pwd) throws InterruptedException {
